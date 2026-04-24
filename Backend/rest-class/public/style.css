@@ -1,0 +1,13 @@
+h1 {
+    color: maroon;
+    margin-top: 20px;
+}
+
+.post{
+    background-color: blanchedalmond;
+}
+
+.user {
+    font-style: italic ;
+    margin-left: 10px;
+}
