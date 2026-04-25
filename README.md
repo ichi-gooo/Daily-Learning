@@ -1,10 +1,10 @@
 # Backend Learning Journal
 
-Hi, I'm Sahed — a CS student from Bangladesh learning backend development 
+Hi I'm Sahed a CS student from Bangladesh learning backend development 
 with the goal of working remotely for international companies.
 
 This repo is my daily code log. Not polished projects, just consistent 
-practice. I upload whatever I worked on that day — experiments, exercises, 
+practice. I upload whatever I worked on that day experiments, exercises, 
 things that broke, things that worked.
 
 ## What I'm learning
