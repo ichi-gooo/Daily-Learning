@@ -3,7 +3,9 @@ const app = express();
 const port = 8080;
 const path = require("path");
 const { v4: uuidv4 } = require('uuid')
+const methodOverride = require('method-override');
 
+app.use(methodOverride('_method'));
 
 app.use(express.urlencoded({extended: true}));
 
@@ -58,13 +60,15 @@ app.patch("/posts/:id" ,(req,res)=> {
     let newContent = req.body.content;
     let post = posts.find((p)=> p.id === id);
     post.content = newContent;
-    
+    console.log(post);
+    res.send("Patch request is working successfully!");
 });
 
 app.get("/posts/:id/edit", (req,res) => {
     let {id} = req.params;
     let post = posts.find((p)=> p.id === id);
     res.render("edit.ejs", { post: post });
+
 });
 
 app.listen(port, ()=> {
