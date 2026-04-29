@@ -61,7 +61,7 @@ app.patch("/posts/:id" ,(req,res)=> {
     let post = posts.find((p)=> p.id === id);
     post.content = newContent;
     console.log(post);
-    res.send("Patch request is working successfully!");
+    res.redirect("/posts");
 });
 
 app.get("/posts/:id/edit", (req,res) => {
@@ -70,6 +70,14 @@ app.get("/posts/:id/edit", (req,res) => {
     res.render("edit.ejs", { post: post });
 
 });
+
+app.delete("/posts/:id",(req,res) => {
+    let {id} = req.params;
+    posts = posts.filter ((p)=> p.id !== id);
+    res.redirect("/posts");
+ 
+})
+
 
 app.listen(port, ()=> {
     console.log(`Server is running on port ${port}`);
