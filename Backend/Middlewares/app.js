@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const ExpressError = require("./ExpressError");
 
 // app.use((req,res,next)=>{
 //     console.log("middleware");
@@ -16,7 +17,7 @@ const checkToken = app.use("/api", (req, res, next) => {
   if (token === "giveaccess") {
     next();
   }
-  res.send("Access Denied!");
+  throw new ExpressError(401, "Access Denied");
 });
 
 app.get("/api", checkToken, (req, res) => {
@@ -35,6 +36,19 @@ app.get("/", (req, res) => {
 
 app.get("/random", (req, res) => {
   res.send("Random");
+});
+
+app.get("/err", (req, res) => {
+  abcd = abcd;
+});
+
+app.use("/admin", (req, res) =>{
+  throw new ExpressError(403, "Access is forbidden");
+});
+
+app.use((err, req, res, next) => {
+  let {status=500,message} = err;
+  res.status(status).send(message);
 });
 
 app.use((req, res) => {
